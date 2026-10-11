@@ -1,0 +1,10 @@
+# Homework 6 - Campus Customs vendor desk agent (Python 3.14)
+# Install:  python -m venv C:\venvs\hw6  &&  C:\venvs\hw6\Scripts\python -m pip install -r requirements.txt
+pydantic-ai-slim[openai]==2.55.0
+openai==3.28.0
+pydantic==2.14.0
+python-dotenv==1.2.4
+tiktoken==0.14.0
+pypdf==6.20.0
+pymupdf==1.28.2
+beautifulsoup4==4.15.0

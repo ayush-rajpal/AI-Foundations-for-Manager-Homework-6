@@ -1,0 +1,30 @@
+{
+  "model": "gpt-6-luna",
+  "offline": {
+    "characters": 28903,
+    "words": 6127,
+    "lines": 339,
+    "tiktoken_o200k_base": 10058
+  },
+  "api": {
+    "baseline_no_handbook": {
+      "input_tokens": 13,
+      "cached_tokens": 0,
+      "output_tokens": 17,
+      "status": "completed"
+    },
+    "handbook_call_1": {
+      "input_tokens": 10075,
+      "cached_tokens": 0,
+      "output_tokens": 5,
+      "status": "completed"
+    },
+    "handbook_call_2": {
+      "input_tokens": 10075,
+      "cached_tokens": 0,
+      "output_tokens": 5,
+      "status": "completed"
+    },
+    "handbook_tokens_by_api": 10062
+  }
+}

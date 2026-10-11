@@ -1,0 +1,2540 @@
+{
+  "generated": "2026-10-10T13:14:13-04:00",
+  "model": "gpt-6-luna",
+  "prices_per_1m": {
+    "input_per_1m": 0.1,
+    "cached_input_per_1m": 0.01,
+    "cache_write_per_1m": 0.125,
+    "output_per_1m": 0.5
+  },
+  "setups": {
+    "with_cache": "openai_prompt_cache_key + prompt_cache_options mode=implicit + cache breakpoint after the instructions (prompt + handbook)",
+    "without_cache": "prompt_cache_options mode=explicit, no breakpoints, AND a new random id at the start of the instructions on every model call so no two requests share a prefix",
+    "both": "x-portkey-cache-force-refresh: true so Portkey's response cache never replays an old response"
+  },
+  "verification": {
+    "without_cache_calls_reading_cached_tokens": 0,
+    "without_cache_calls_writing_cache": 24,
+    "without_cache_ok": true,
+    "portkey_replayed_calls": 0,
+    "with_cache_calls_reading_from_cache": 24,
+    "with_cache_calls_total": 24,
+    "providers": [
+      "azure-openai"
+    ]
+  },
+  "summary": {
+    "with_cache": {
+      "input_tokens": 266532,
+      "cache_read_tokens": 263508,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 3024,
+      "output_tokens": 2564,
+      "reasoning_tokens": 1035,
+      "total_tokens": 269096,
+      "model_calls": 24,
+      "cost_usd": 0.00421948,
+      "cost_uncached_input_usd": 0.0003024,
+      "cost_cached_input_usd": 0.00263508,
+      "cost_cache_write_usd": 0.0,
+      "cost_output_usd": 0.001282,
+      "documents": 12,
+      "avg_cost_per_document_usd": 0.00035162,
+      "documents_all_correct": 8
+    },
+    "without_cache": {
+      "input_tokens": 267081,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 264057,
+      "uncached_input_tokens": 3024,
+      "output_tokens": 2479,
+      "reasoning_tokens": 924,
+      "total_tokens": 269560,
+      "model_calls": 24,
+      "cost_usd": 0.03454898,
+      "cost_uncached_input_usd": 0.0003024,
+      "cost_cached_input_usd": 0.0,
+      "cost_cache_write_usd": 0.03300708,
+      "cost_output_usd": 0.0012395,
+      "documents": 12,
+      "avg_cost_per_document_usd": 0.00287908,
+      "documents_all_correct": 8
+    }
+  },
+  "runs": [
+    {
+      "setup": "with_cache",
+      "document": "p01_bluehen_quote.html",
+      "model_calls": 2,
+      "input_tokens": 22202,
+      "cache_read_tokens": 21950,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 252,
+      "output_tokens": 167,
+      "reasoning_tokens": 42,
+      "total_tokens": 22369,
+      "cost_usd": 0.0003282,
+      "cost_uncached_input_usd": 2.52e-05,
+      "cost_cached_input_usd": 0.0002195,
+      "cost_cache_write_usd": 0.0,
+      "cost_output_usd": 8.35e-05,
+      "output": {
+        "vendor": "Blue Hen Apparel",
+        "sku": "CC-HD-006",
+        "unit_price": 21.8,
+        "lead_time_days": 14,
+        "min_order": 240,
+        "decision": "recommend",
+        "reason": "Blue Hen Apparel is approved, and the $21.80 unit price is within the SKU's max cost; the 14-day lead time and 240-unit minimum also meet the limits. All four purchasing checks pass."
+      },
+      "matches_key": {
+        "vendor": true,
+        "sku": true,
+        "unit_price": true,
+        "lead_time_days": true,
+        "min_order": true,
+        "decision": true
+      },
+      "all_correct": true
+    },
+    {
+      "setup": "with_cache",
+      "document": "p02_elmcity_quote.html",
+      "model_calls": 2,
+      "input_tokens": 22206,
+      "cache_read_tokens": 21954,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 252,
+      "output_tokens": 200,
+      "reasoning_tokens": 75,
+      "total_tokens": 22406,
+      "cost_usd": 0.00034474,
+      "cost_uncached_input_usd": 2.52e-05,
+      "cost_cached_input_usd": 0.00021954,
+      "cost_cache_write_usd": 0.0,
+      "cost_output_usd": 0.0001,
+      "output": {
+        "vendor": "Elm City Screenprint",
+        "sku": "CC-TE-004",
+        "unit_price": 5.11,
+        "lead_time_days": 9,
+        "min_order": 300,
+        "decision": "recommend",
+        "reason": "All four checks pass: Elm City Screenprint is approved, the $5.11 unit price is within the SKU limit, lead time is 9 days, and the minimum order is 300 units."
+      },
+      "matches_key": {
+        "vendor": true,
+        "sku": true,
+        "unit_price": false,
+        "lead_time_days": true,
+        "min_order": true,
+        "decision": false
+      },
+      "all_correct": false
+    },
+    {
+      "setup": "with_cache",
+      "document": "p03_ivyprint_catalog.html",
+      "model_calls": 2,
+      "input_tokens": 22204,
+      "cache_read_tokens": 21952,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 252,
+      "output_tokens": 218,
+      "reasoning_tokens": 96,
+      "total_tokens": 22422,
+      "cost_usd": 0.00035372,
+      "cost_uncached_input_usd": 2.52e-05,
+      "cost_cached_input_usd": 0.00021952,
+      "cost_cache_write_usd": 0.0,
+      "cost_output_usd": 0.000109,
+      "output": {
+        "vendor": "Chapel Street Goods",
+        "sku": "CC-PG-006",
+        "unit_price": 5.83,
+        "lead_time_days": 10,
+        "min_order": 150,
+        "decision": "recommend",
+        "reason": "Chapel Street Goods is approved, and the unit price is within the SKU limit, lead time is 10 days, and minimum order is 150 units; all four purchasing checks pass."
+      },
+      "matches_key": {
+        "vendor": false,
+        "sku": true,
+        "unit_price": true,
+        "lead_time_days": true,
+        "min_order": true,
+        "decision": false
+      },
+      "all_correct": false
+    },
+    {
+      "setup": "with_cache",
+      "document": "p04_harborstitch_quote.html",
+      "model_calls": 2,
+      "input_tokens": 22198,
+      "cache_read_tokens": 21946,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 252,
+      "output_tokens": 180,
+      "reasoning_tokens": 40,
+      "total_tokens": 22378,
+      "cost_usd": 0.00033466,
+      "cost_uncached_input_usd": 2.52e-05,
+      "cost_cached_input_usd": 0.00021946,
+      "cost_cache_write_usd": 0.0,
+      "cost_output_usd": 9e-05,
+      "output": {
+        "vendor": "Harbor Stitch Embroidery",
+        "sku": "CC-HT-001",
+        "unit_price": 8.68,
+        "lead_time_days": 16,
+        "min_order": 120,
+        "decision": "recommend",
+        "reason": "All four purchasing checks pass: Harbor Stitch Embroidery is approved, the $8.68 unit price is within the SKU limit, the 16-day lead time is no more than 21 days, and the 120-unit minimum is no more than 600."
+      },
+      "matches_key": {
+        "vendor": true,
+        "sku": true,
+        "unit_price": true,
+        "lead_time_days": true,
+        "min_order": true,
+        "decision": true
+      },
+      "all_correct": true
+    },
+    {
+      "setup": "with_cache",
+      "document": "p05_maplemills_quote.pdf",
+      "model_calls": 2,
+      "input_tokens": 22177,
+      "cache_read_tokens": 21925,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 252,
+      "output_tokens": 160,
+      "reasoning_tokens": 45,
+      "total_tokens": 22337,
+      "cost_usd": 0.00032445,
+      "cost_uncached_input_usd": 2.52e-05,
+      "cost_cached_input_usd": 0.00021925,
+      "cost_cache_write_usd": 0.0,
+      "cost_output_usd": 8e-05,
+      "output": {
+        "vendor": "Maple Leaf Mills",
+        "sku": "CC-WV-003",
+        "unit_price": 24.16,
+        "lead_time_days": 28,
+        "min_order": 100,
+        "decision": "do_not_recommend",
+        "reason": "The approved-vendor, price, and minimum-order checks pass, but the lead time of 28 days exceeds the 21-day limit."
+      },
+      "matches_key": {
+        "vendor": true,
+        "sku": true,
+        "unit_price": true,
+        "lead_time_days": true,
+        "min_order": true,
+        "decision": true
+      },
+      "all_correct": true
+    },
+    {
+      "setup": "with_cache",
+      "document": "p06_qtextile_quote.pdf",
+      "model_calls": 2,
+      "input_tokens": 22221,
+      "cache_read_tokens": 21969,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 252,
+      "output_tokens": 252,
+      "reasoning_tokens": 120,
+      "total_tokens": 22473,
+      "cost_usd": 0.00037089,
+      "cost_uncached_input_usd": 2.52e-05,
+      "cost_cached_input_usd": 0.00021969,
+      "cost_cache_write_usd": 0.0,
+      "cost_output_usd": 0.000126,
+      "output": {
+        "vendor": "Quinnipiac Textile Deals",
+        "sku": "CC-TE-017",
+        "unit_price": 7.01,
+        "lead_time_days": 6,
+        "min_order": 200,
+        "decision": "do_not_recommend",
+        "reason": "The approved-vendor check fails: Quinnipiac Textile Deals is listed as removed in the handbook. Price ($7.01), lead time (6 days), and minimum order (200 units) pass their checks."
+      },
+      "matches_key": {
+        "vendor": true,
+        "sku": true,
+        "unit_price": true,
+        "lead_time_days": true,
+        "min_order": true,
+        "decision": true
+      },
+      "all_correct": true
+    },
+    {
+      "setup": "with_cache",
+      "document": "p07_longwharf_quote.pdf",
+      "model_calls": 2,
+      "input_tokens": 22196,
+      "cache_read_tokens": 21944,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 252,
+      "output_tokens": 172,
+      "reasoning_tokens": 50,
+      "total_tokens": 22368,
+      "cost_usd": 0.00033064,
+      "cost_uncached_input_usd": 2.52e-05,
+      "cost_cached_input_usd": 0.00021944,
+      "cost_cache_write_usd": 0.0,
+      "cost_output_usd": 8.6e-05,
+      "output": {
+        "vendor": "Long Wharf Knitting",
+        "sku": "CC-KN-001",
+        "unit_price": 17.23,
+        "lead_time_days": 7,
+        "min_order": 120,
+        "decision": "recommend",
+        "reason": "All four purchasing checks pass: the vendor is approved, the unit price is within the SKU limit, the corrected lead time is 7 days, and the minimum order is 120 units."
+      },
+      "matches_key": {
+        "vendor": true,
+        "sku": true,
+        "unit_price": true,
+        "lead_time_days": false,
+        "min_order": true,
+        "decision": false
+      },
+      "all_correct": false
+    },
+    {
+      "setup": "with_cache",
+      "document": "p08_chapelst_email.eml",
+      "model_calls": 2,
+      "input_tokens": 22204,
+      "cache_read_tokens": 21952,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 252,
+      "output_tokens": 173,
+      "reasoning_tokens": 45,
+      "total_tokens": 22377,
+      "cost_usd": 0.00033122,
+      "cost_uncached_input_usd": 2.52e-05,
+      "cost_cached_input_usd": 0.00021952,
+      "cost_cache_write_usd": 0.0,
+      "cost_output_usd": 8.65e-05,
+      "output": {
+        "vendor": "Chapel Street Goods",
+        "sku": "CC-PG-010",
+        "unit_price": 4.27,
+        "lead_time_days": 6,
+        "min_order": 250,
+        "decision": "recommend",
+        "reason": "All four purchasing checks pass: Chapel Street Goods is approved, the $4.27 unit price is within the SKU limit, lead time is 6 days, and the 250-unit minimum is within the threshold."
+      },
+      "matches_key": {
+        "vendor": true,
+        "sku": true,
+        "unit_price": true,
+        "lead_time_days": true,
+        "min_order": true,
+        "decision": true
+      },
+      "all_correct": true
+    },
+    {
+      "setup": "with_cache",
+      "document": "p09_westville_email.eml",
+      "model_calls": 2,
+      "input_tokens": 22340,
+      "cache_read_tokens": 22088,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 252,
+      "output_tokens": 525,
+      "reasoning_tokens": 396,
+      "total_tokens": 22865,
+      "cost_usd": 0.00050858,
+      "cost_uncached_input_usd": 2.52e-05,
+      "cost_cached_input_usd": 0.00022088,
+      "cost_cache_write_usd": 0.0,
+      "cost_output_usd": 0.0002625,
+      "output": {
+        "vendor": "Westville Bag Co",
+        "sku": "CC-BG-007",
+        "unit_price": 24.82,
+        "lead_time_days": 26,
+        "min_order": 144,
+        "decision": "do_not_recommend",
+        "reason": "The 26-business-day lead time exceeds the 21-day limit; approved-vendor status, price ($24.82, below the $28.22 max), and minimum order (144) pass."
+      },
+      "matches_key": {
+        "vendor": true,
+        "sku": true,
+        "unit_price": true,
+        "lead_time_days": true,
+        "min_order": true,
+        "decision": true
+      },
+      "all_correct": true
+    },
+    {
+      "setup": "with_cache",
+      "document": "p10_eastrock_email.eml",
+      "model_calls": 2,
+      "input_tokens": 22223,
+      "cache_read_tokens": 21971,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 252,
+      "output_tokens": 161,
+      "reasoning_tokens": 35,
+      "total_tokens": 22384,
+      "cost_usd": 0.00032541,
+      "cost_uncached_input_usd": 2.52e-05,
+      "cost_cached_input_usd": 0.00021971,
+      "cost_cache_write_usd": 0.0,
+      "cost_output_usd": 8.05e-05,
+      "output": {
+        "vendor": "East Rock Ceramics",
+        "sku": "CC-MG-003",
+        "unit_price": 4.87,
+        "lead_time_days": 11,
+        "min_order": 96,
+        "decision": "recommend",
+        "reason": "All four purchasing checks pass: East Rock Ceramics is approved, the unit price is within the SKU's max unit cost, lead time is 11 days, and the minimum order is 96 units."
+      },
+      "matches_key": {
+        "vendor": true,
+        "sku": true,
+        "unit_price": true,
+        "lead_time_days": true,
+        "min_order": true,
+        "decision": true
+      },
+      "all_correct": true
+    },
+    {
+      "setup": "with_cache",
+      "document": "p11_yorkst_quote.html",
+      "model_calls": 2,
+      "input_tokens": 22168,
+      "cache_read_tokens": 21916,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 252,
+      "output_tokens": 176,
+      "reasoning_tokens": 43,
+      "total_tokens": 22344,
+      "cost_usd": 0.00033236,
+      "cost_uncached_input_usd": 2.52e-05,
+      "cost_cached_input_usd": 0.00021916,
+      "cost_cache_write_usd": 0.0,
+      "cost_output_usd": 8.8e-05,
+      "output": {
+        "vendor": "York Street Headwear",
+        "sku": "CC-HW-002",
+        "unit_price": 13.62,
+        "lead_time_days": 12,
+        "min_order": 180,
+        "decision": "do_not_recommend",
+        "reason": "The price check fails: the $13.62 unit price exceeds the $11.52 max unit cost for this SKU. The approved-vendor, lead-time (12 days), and minimum-order (180 units) checks pass."
+      },
+      "matches_key": {
+        "vendor": true,
+        "sku": true,
+        "unit_price": true,
+        "lead_time_days": true,
+        "min_order": true,
+        "decision": true
+      },
+      "all_correct": true
+    },
+    {
+      "setup": "with_cache",
+      "document": "p12_bluehen_quote.pdf",
+      "model_calls": 2,
+      "input_tokens": 22193,
+      "cache_read_tokens": 21941,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 252,
+      "output_tokens": 180,
+      "reasoning_tokens": 48,
+      "total_tokens": 22373,
+      "cost_usd": 0.00033461,
+      "cost_uncached_input_usd": 2.52e-05,
+      "cost_cached_input_usd": 0.00021941,
+      "cost_cache_write_usd": 0.0,
+      "cost_output_usd": 9e-05,
+      "output": {
+        "vendor": "Blue Hen Apparel",
+        "sku": "CC-CR-010",
+        "unit_price": 17.44,
+        "lead_time_days": 13,
+        "min_order": 200,
+        "decision": "recommend",
+        "reason": "All four purchasing checks pass: Blue Hen Apparel is approved, the revised $17.44 unit price is within the SKU limit, the 13-day lead time is within 21 days, and the 200-unit minimum is within 600 units."
+      },
+      "matches_key": {
+        "vendor": true,
+        "sku": true,
+        "unit_price": false,
+        "lead_time_days": true,
+        "min_order": true,
+        "decision": false
+      },
+      "all_correct": false
+    },
+    {
+      "setup": "without_cache",
+      "document": "p01_bluehen_quote.html",
+      "model_calls": 2,
+      "input_tokens": 22250,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 21998,
+      "uncached_input_tokens": 252,
+      "output_tokens": 177,
+      "reasoning_tokens": 48,
+      "total_tokens": 22427,
+      "cost_usd": 0.00286345,
+      "cost_uncached_input_usd": 2.52e-05,
+      "cost_cached_input_usd": 0.0,
+      "cost_cache_write_usd": 0.00274975,
+      "cost_output_usd": 8.85e-05,
+      "output": {
+        "vendor": "Blue Hen Apparel",
+        "sku": "CC-HD-006",
+        "unit_price": 21.8,
+        "lead_time_days": 14,
+        "min_order": 240,
+        "decision": "recommend",
+        "reason": "All four purchasing checks pass: Blue Hen Apparel is approved, the $21.80 unit price is within the SKU limit, the 14-day lead time is within 21 days, and the 240-unit minimum is within 600."
+      },
+      "matches_key": {
+        "vendor": true,
+        "sku": true,
+        "unit_price": true,
+        "lead_time_days": true,
+        "min_order": true,
+        "decision": true
+      },
+      "all_correct": true
+    },
+    {
+      "setup": "without_cache",
+      "document": "p02_elmcity_quote.html",
+      "model_calls": 2,
+      "input_tokens": 22252,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 22000,
+      "uncached_input_tokens": 252,
+      "output_tokens": 178,
+      "reasoning_tokens": 45,
+      "total_tokens": 22430,
+      "cost_usd": 0.0028642,
+      "cost_uncached_input_usd": 2.52e-05,
+      "cost_cached_input_usd": 0.0,
+      "cost_cache_write_usd": 0.00275,
+      "cost_output_usd": 8.9e-05,
+      "output": {
+        "vendor": "Elm City Screenprint",
+        "sku": "CC-TE-004",
+        "unit_price": 5.11,
+        "lead_time_days": 9,
+        "min_order": 300,
+        "decision": "recommend",
+        "reason": "All four purchasing checks pass: the vendor is approved, the $5.11 unit price is within the SKU limit, the 9-day lead time is at most 21 days, and the 300-unit minimum is at most 600."
+      },
+      "matches_key": {
+        "vendor": true,
+        "sku": true,
+        "unit_price": false,
+        "lead_time_days": true,
+        "min_order": true,
+        "decision": false
+      },
+      "all_correct": false
+    },
+    {
+      "setup": "without_cache",
+      "document": "p03_ivyprint_catalog.html",
+      "model_calls": 2,
+      "input_tokens": 22250,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 21998,
+      "uncached_input_tokens": 252,
+      "output_tokens": 320,
+      "reasoning_tokens": 197,
+      "total_tokens": 22570,
+      "cost_usd": 0.00293495,
+      "cost_uncached_input_usd": 2.52e-05,
+      "cost_cached_input_usd": 0.0,
+      "cost_cache_write_usd": 0.00274975,
+      "cost_output_usd": 0.00016,
+      "output": {
+        "vendor": "Chapel Street Goods",
+        "sku": "CC-PG-006",
+        "unit_price": 5.83,
+        "lead_time_days": 10,
+        "min_order": 150,
+        "decision": "recommend",
+        "reason": "Chapel Street Goods is approved, and the quoted $5.83 unit price is within the catalogue limit; the 10-day lead time and 150-unit minimum also meet the purchasing checks."
+      },
+      "matches_key": {
+        "vendor": false,
+        "sku": true,
+        "unit_price": true,
+        "lead_time_days": true,
+        "min_order": true,
+        "decision": false
+      },
+      "all_correct": false
+    },
+    {
+      "setup": "without_cache",
+      "document": "p04_harborstitch_quote.html",
+      "model_calls": 2,
+      "input_tokens": 22240,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 21988,
+      "uncached_input_tokens": 252,
+      "output_tokens": 179,
+      "reasoning_tokens": 43,
+      "total_tokens": 22419,
+      "cost_usd": 0.00286319,
+      "cost_uncached_input_usd": 2.52e-05,
+      "cost_cached_input_usd": 0.0,
+      "cost_cache_write_usd": 0.00274849,
+      "cost_output_usd": 8.95e-05,
+      "output": {
+        "vendor": "Harbor Stitch Embroidery",
+        "sku": "CC-HT-001",
+        "unit_price": 8.68,
+        "lead_time_days": 16,
+        "min_order": 120,
+        "decision": "recommend",
+        "reason": "All four checks pass: Harbor Stitch Embroidery is approved, the $8.68 unit price is within the SKU limit, the 16-day lead time is within 21 days, and the 120-unit minimum is within 600 units."
+      },
+      "matches_key": {
+        "vendor": true,
+        "sku": true,
+        "unit_price": true,
+        "lead_time_days": true,
+        "min_order": true,
+        "decision": true
+      },
+      "all_correct": true
+    },
+    {
+      "setup": "without_cache",
+      "document": "p05_maplemills_quote.pdf",
+      "model_calls": 2,
+      "input_tokens": 22228,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 21976,
+      "uncached_input_tokens": 252,
+      "output_tokens": 185,
+      "reasoning_tokens": 51,
+      "total_tokens": 22413,
+      "cost_usd": 0.00286469,
+      "cost_uncached_input_usd": 2.52e-05,
+      "cost_cached_input_usd": 0.0,
+      "cost_cache_write_usd": 0.00274699,
+      "cost_output_usd": 9.25e-05,
+      "output": {
+        "vendor": "Maple Leaf Mills",
+        "sku": "CC-WV-003",
+        "unit_price": 24.16,
+        "lead_time_days": 28,
+        "min_order": 100,
+        "decision": "do_not_recommend",
+        "reason": "Lead-time check fails: the quoted 28-day lead time exceeds the 21-day limit. The vendor is approved, the $24.16 unit price is within the SKU's limit, and the 100-unit minimum order passes."
+      },
+      "matches_key": {
+        "vendor": true,
+        "sku": true,
+        "unit_price": true,
+        "lead_time_days": true,
+        "min_order": true,
+        "decision": true
+      },
+      "all_correct": true
+    },
+    {
+      "setup": "without_cache",
+      "document": "p06_qtextile_quote.pdf",
+      "model_calls": 2,
+      "input_tokens": 22265,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 22013,
+      "uncached_input_tokens": 252,
+      "output_tokens": 181,
+      "reasoning_tokens": 47,
+      "total_tokens": 22446,
+      "cost_usd": 0.00286732,
+      "cost_uncached_input_usd": 2.52e-05,
+      "cost_cached_input_usd": 0.0,
+      "cost_cache_write_usd": 0.00275162,
+      "cost_output_usd": 9.05e-05,
+      "output": {
+        "vendor": "Quinnipiac Textile Deals",
+        "sku": "CC-TE-017",
+        "unit_price": 7.01,
+        "lead_time_days": 6,
+        "min_order": 200,
+        "decision": "do_not_recommend",
+        "reason": "The approved-vendor check fails: Quinnipiac Textile Deals is removed from the approved vendor list. The quoted price ($7.01), lead time (6 days), and minimum order (200 units) pass their checks."
+      },
+      "matches_key": {
+        "vendor": true,
+        "sku": true,
+        "unit_price": true,
+        "lead_time_days": true,
+        "min_order": true,
+        "decision": true
+      },
+      "all_correct": true
+    },
+    {
+      "setup": "without_cache",
+      "document": "p07_longwharf_quote.pdf",
+      "model_calls": 2,
+      "input_tokens": 22241,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 21989,
+      "uncached_input_tokens": 252,
+      "output_tokens": 170,
+      "reasoning_tokens": 40,
+      "total_tokens": 22411,
+      "cost_usd": 0.00285882,
+      "cost_uncached_input_usd": 2.52e-05,
+      "cost_cached_input_usd": 0.0,
+      "cost_cache_write_usd": 0.00274862,
+      "cost_output_usd": 8.5e-05,
+      "output": {
+        "vendor": "Long Wharf Knitting",
+        "sku": "CC-KN-001",
+        "unit_price": 17.23,
+        "lead_time_days": 7,
+        "min_order": 120,
+        "decision": "recommend",
+        "reason": "All four checks pass: Long Wharf Knitting is approved, the $17.23 unit price is within the SKU\u2019s limit, the corrected lead time is 7 days, and the 120-unit minimum is within the limit."
+      },
+      "matches_key": {
+        "vendor": true,
+        "sku": true,
+        "unit_price": true,
+        "lead_time_days": false,
+        "min_order": true,
+        "decision": false
+      },
+      "all_correct": false
+    },
+    {
+      "setup": "without_cache",
+      "document": "p08_chapelst_email.eml",
+      "model_calls": 2,
+      "input_tokens": 22252,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 22000,
+      "uncached_input_tokens": 252,
+      "output_tokens": 176,
+      "reasoning_tokens": 42,
+      "total_tokens": 22428,
+      "cost_usd": 0.00286319,
+      "cost_uncached_input_usd": 2.52e-05,
+      "cost_cached_input_usd": 0.0,
+      "cost_cache_write_usd": 0.00274999,
+      "cost_output_usd": 8.8e-05,
+      "output": {
+        "vendor": "Chapel Street Goods",
+        "sku": "CC-PG-010",
+        "unit_price": 4.27,
+        "lead_time_days": 6,
+        "min_order": 250,
+        "decision": "recommend",
+        "reason": "All four purchasing checks pass: Chapel Street Goods is approved, the $4.27 unit price is within the SKU limit, the 6-day lead time is within 21 days, and the 250-unit minimum is within 600 units."
+      },
+      "matches_key": {
+        "vendor": true,
+        "sku": true,
+        "unit_price": true,
+        "lead_time_days": true,
+        "min_order": true,
+        "decision": true
+      },
+      "all_correct": true
+    },
+    {
+      "setup": "without_cache",
+      "document": "p09_westville_email.eml",
+      "model_calls": 2,
+      "input_tokens": 22391,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 22139,
+      "uncached_input_tokens": 252,
+      "output_tokens": 395,
+      "reasoning_tokens": 273,
+      "total_tokens": 22786,
+      "cost_usd": 0.00299007,
+      "cost_uncached_input_usd": 2.52e-05,
+      "cost_cached_input_usd": 0.0,
+      "cost_cache_write_usd": 0.00276737,
+      "cost_output_usd": 0.0001975,
+      "output": {
+        "vendor": "Westville Bag Co",
+        "sku": "CC-BG-007",
+        "unit_price": 24.82,
+        "lead_time_days": 26,
+        "min_order": 144,
+        "decision": "do_not_recommend",
+        "reason": "The lead-time check fails: the quote states 26 business days, exceeding the 21-day limit. The approved-vendor, price, and minimum-order checks pass."
+      },
+      "matches_key": {
+        "vendor": true,
+        "sku": true,
+        "unit_price": true,
+        "lead_time_days": true,
+        "min_order": true,
+        "decision": true
+      },
+      "all_correct": true
+    },
+    {
+      "setup": "without_cache",
+      "document": "p10_eastrock_email.eml",
+      "model_calls": 2,
+      "input_tokens": 22269,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 22017,
+      "uncached_input_tokens": 252,
+      "output_tokens": 180,
+      "reasoning_tokens": 53,
+      "total_tokens": 22449,
+      "cost_usd": 0.00286732,
+      "cost_uncached_input_usd": 2.52e-05,
+      "cost_cached_input_usd": 0.0,
+      "cost_cache_write_usd": 0.00275212,
+      "cost_output_usd": 9e-05,
+      "output": {
+        "vendor": "East Rock Ceramics",
+        "sku": "CC-MG-003",
+        "unit_price": 4.87,
+        "lead_time_days": 11,
+        "min_order": 96,
+        "decision": "recommend",
+        "reason": "All four purchasing checks pass: East Rock Ceramics is approved, the $4.87 unit price is within the SKU limit, lead time is 11 days, and the minimum order is 96 units."
+      },
+      "matches_key": {
+        "vendor": true,
+        "sku": true,
+        "unit_price": true,
+        "lead_time_days": true,
+        "min_order": true,
+        "decision": true
+      },
+      "all_correct": true
+    },
+    {
+      "setup": "without_cache",
+      "document": "p11_yorkst_quote.html",
+      "model_calls": 2,
+      "input_tokens": 22209,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 21957,
+      "uncached_input_tokens": 252,
+      "output_tokens": 174,
+      "reasoning_tokens": 46,
+      "total_tokens": 22383,
+      "cost_usd": 0.00285683,
+      "cost_uncached_input_usd": 2.52e-05,
+      "cost_cached_input_usd": 0.0,
+      "cost_cache_write_usd": 0.00274463,
+      "cost_output_usd": 8.7e-05,
+      "output": {
+        "vendor": "York Street Headwear",
+        "sku": "CC-HW-002",
+        "unit_price": 13.62,
+        "lead_time_days": 12,
+        "min_order": 180,
+        "decision": "do_not_recommend",
+        "reason": "York Street Headwear is approved, and the 12-day lead time and 180-unit minimum order pass. The price check fails: $13.62 per unit exceeds this SKU's maximum unit cost."
+      },
+      "matches_key": {
+        "vendor": true,
+        "sku": true,
+        "unit_price": true,
+        "lead_time_days": true,
+        "min_order": true,
+        "decision": true
+      },
+      "all_correct": true
+    },
+    {
+      "setup": "without_cache",
+      "document": "p12_bluehen_quote.pdf",
+      "model_calls": 2,
+      "input_tokens": 22234,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 21982,
+      "uncached_input_tokens": 252,
+      "output_tokens": 164,
+      "reasoning_tokens": 39,
+      "total_tokens": 22398,
+      "cost_usd": 0.00285495,
+      "cost_uncached_input_usd": 2.52e-05,
+      "cost_cached_input_usd": 0.0,
+      "cost_cache_write_usd": 0.00274775,
+      "cost_output_usd": 8.2e-05,
+      "output": {
+        "vendor": "Blue Hen Apparel",
+        "sku": "CC-CR-010",
+        "unit_price": 17.44,
+        "lead_time_days": 13,
+        "min_order": 200,
+        "decision": "recommend",
+        "reason": "All four purchasing checks pass: Blue Hen Apparel is approved, the $17.44 unit price is within the SKU limit, lead time is 13 days, and the 200-unit minimum is within the limit."
+      },
+      "matches_key": {
+        "vendor": true,
+        "sku": true,
+        "unit_price": false,
+        "lead_time_days": true,
+        "min_order": true,
+        "decision": false
+      },
+      "all_correct": false
+    }
+  ],
+  "calls": [
+    {
+      "setup": "with_cache",
+      "document": "p01_bluehen_quote.html",
+      "call_index": 1,
+      "response_id": "resp_0b928d6300c94e54006aca71fffd788193a0388cf5df62748f",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11016,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 10890
+        },
+        "output_tokens": 27,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 11043
+      },
+      "input_tokens": 11016,
+      "cache_read_tokens": 10890,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 126,
+      "output_tokens": 27,
+      "reasoning_tokens": 0,
+      "total_tokens": 11043,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0001089,
+        "cache_write": 0.0,
+        "output": 1.35e-05
+      },
+      "cost_usd": 0.000135
+    },
+    {
+      "setup": "with_cache",
+      "document": "p01_bluehen_quote.html",
+      "call_index": 2,
+      "response_id": "resp_0b928d6300c94e54006aca7201c3688193af4692a18701adfa",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11186,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 11060
+        },
+        "output_tokens": 140,
+        "output_tokens_details": {
+          "reasoning_tokens": 42
+        },
+        "total_tokens": 11326
+      },
+      "input_tokens": 11186,
+      "cache_read_tokens": 11060,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 126,
+      "output_tokens": 140,
+      "reasoning_tokens": 42,
+      "total_tokens": 11326,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0001106,
+        "cache_write": 0.0,
+        "output": 7e-05
+      },
+      "cost_usd": 0.0001932
+    },
+    {
+      "setup": "with_cache",
+      "document": "p02_elmcity_quote.html",
+      "call_index": 1,
+      "response_id": "resp_026b604b2a1b931a006aca7203a8248190a57d54ade5bc49cd",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11017,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 10891
+        },
+        "output_tokens": 28,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 11045
+      },
+      "input_tokens": 11017,
+      "cache_read_tokens": 10891,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 126,
+      "output_tokens": 28,
+      "reasoning_tokens": 0,
+      "total_tokens": 11045,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.00010891,
+        "cache_write": 0.0,
+        "output": 1.4e-05
+      },
+      "cost_usd": 0.00013551
+    },
+    {
+      "setup": "with_cache",
+      "document": "p02_elmcity_quote.html",
+      "call_index": 2,
+      "response_id": "resp_026b604b2a1b931a006aca720559788190b8f99696d0a50e74",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11189,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 11063
+        },
+        "output_tokens": 172,
+        "output_tokens_details": {
+          "reasoning_tokens": 75
+        },
+        "total_tokens": 11361
+      },
+      "input_tokens": 11189,
+      "cache_read_tokens": 11063,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 126,
+      "output_tokens": 172,
+      "reasoning_tokens": 75,
+      "total_tokens": 11361,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.00011063,
+        "cache_write": 0.0,
+        "output": 8.6e-05
+      },
+      "cost_usd": 0.00020923
+    },
+    {
+      "setup": "with_cache",
+      "document": "p03_ivyprint_catalog.html",
+      "call_index": 1,
+      "response_id": "resp_08bbe29165013e49006aca720782908195a97e3075dff17a4b",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11017,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 10891
+        },
+        "output_tokens": 28,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 11045
+      },
+      "input_tokens": 11017,
+      "cache_read_tokens": 10891,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 126,
+      "output_tokens": 28,
+      "reasoning_tokens": 0,
+      "total_tokens": 11045,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.00010891,
+        "cache_write": 0.0,
+        "output": 1.4e-05
+      },
+      "cost_usd": 0.00013551
+    },
+    {
+      "setup": "with_cache",
+      "document": "p03_ivyprint_catalog.html",
+      "call_index": 2,
+      "response_id": "resp_08bbe29165013e49006aca7209b8a08195aabadfd183766aa1",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11187,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 11061
+        },
+        "output_tokens": 190,
+        "output_tokens_details": {
+          "reasoning_tokens": 96
+        },
+        "total_tokens": 11377
+      },
+      "input_tokens": 11187,
+      "cache_read_tokens": 11061,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 126,
+      "output_tokens": 190,
+      "reasoning_tokens": 96,
+      "total_tokens": 11377,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.00011061,
+        "cache_write": 0.0,
+        "output": 9.5e-05
+      },
+      "cost_usd": 0.00021821
+    },
+    {
+      "setup": "with_cache",
+      "document": "p04_harborstitch_quote.html",
+      "call_index": 1,
+      "response_id": "resp_0840315a8a2dd824006aca720c54c88194827487d19f7728fa",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11019,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 10893
+        },
+        "output_tokens": 30,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 11049
+      },
+      "input_tokens": 11019,
+      "cache_read_tokens": 10893,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 126,
+      "output_tokens": 30,
+      "reasoning_tokens": 0,
+      "total_tokens": 11049,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.00010893,
+        "cache_write": 0.0,
+        "output": 1.5e-05
+      },
+      "cost_usd": 0.00013653
+    },
+    {
+      "setup": "with_cache",
+      "document": "p04_harborstitch_quote.html",
+      "call_index": 2,
+      "response_id": "resp_0840315a8a2dd824006aca720e04bc81948209ad8862b09336",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11179,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 11053
+        },
+        "output_tokens": 150,
+        "output_tokens_details": {
+          "reasoning_tokens": 40
+        },
+        "total_tokens": 11329
+      },
+      "input_tokens": 11179,
+      "cache_read_tokens": 11053,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 126,
+      "output_tokens": 150,
+      "reasoning_tokens": 40,
+      "total_tokens": 11329,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.00011053,
+        "cache_write": 0.0,
+        "output": 7.5e-05
+      },
+      "cost_usd": 0.00019813
+    },
+    {
+      "setup": "with_cache",
+      "document": "p05_maplemills_quote.pdf",
+      "call_index": 1,
+      "response_id": "resp_00960d8801c2f106006aca7210343c8194aa4cf722dbe55536",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11017,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 10891
+        },
+        "output_tokens": 28,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 11045
+      },
+      "input_tokens": 11017,
+      "cache_read_tokens": 10891,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 126,
+      "output_tokens": 28,
+      "reasoning_tokens": 0,
+      "total_tokens": 11045,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.00010891,
+        "cache_write": 0.0,
+        "output": 1.4e-05
+      },
+      "cost_usd": 0.00013551
+    },
+    {
+      "setup": "with_cache",
+      "document": "p05_maplemills_quote.pdf",
+      "call_index": 2,
+      "response_id": "resp_00960d8801c2f106006aca72121e008194bddba4faa878c116",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11160,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 11034
+        },
+        "output_tokens": 132,
+        "output_tokens_details": {
+          "reasoning_tokens": 45
+        },
+        "total_tokens": 11292
+      },
+      "input_tokens": 11160,
+      "cache_read_tokens": 11034,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 126,
+      "output_tokens": 132,
+      "reasoning_tokens": 45,
+      "total_tokens": 11292,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.00011034,
+        "cache_write": 0.0,
+        "output": 6.6e-05
+      },
+      "cost_usd": 0.00018894
+    },
+    {
+      "setup": "with_cache",
+      "document": "p06_qtextile_quote.pdf",
+      "call_index": 1,
+      "response_id": "resp_0a69c473d19835b0006aca72141f3c8190bf51bb11b8c104c9",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11017,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 10891
+        },
+        "output_tokens": 28,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 11045
+      },
+      "input_tokens": 11017,
+      "cache_read_tokens": 10891,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 126,
+      "output_tokens": 28,
+      "reasoning_tokens": 0,
+      "total_tokens": 11045,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.00010891,
+        "cache_write": 0.0,
+        "output": 1.4e-05
+      },
+      "cost_usd": 0.00013551
+    },
+    {
+      "setup": "with_cache",
+      "document": "p06_qtextile_quote.pdf",
+      "call_index": 2,
+      "response_id": "resp_0a69c473d19835b0006aca7215fc6481909a0bfc2a51abbf64",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11204,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 11078
+        },
+        "output_tokens": 224,
+        "output_tokens_details": {
+          "reasoning_tokens": 120
+        },
+        "total_tokens": 11428
+      },
+      "input_tokens": 11204,
+      "cache_read_tokens": 11078,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 126,
+      "output_tokens": 224,
+      "reasoning_tokens": 120,
+      "total_tokens": 11428,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.00011078,
+        "cache_write": 0.0,
+        "output": 0.000112
+      },
+      "cost_usd": 0.00023538
+    },
+    {
+      "setup": "with_cache",
+      "document": "p07_longwharf_quote.pdf",
+      "call_index": 1,
+      "response_id": "resp_0b233b243c127b7f006aca7218ad488196b26fcc3f4ea9ad30",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11017,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 10891
+        },
+        "output_tokens": 28,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 11045
+      },
+      "input_tokens": 11017,
+      "cache_read_tokens": 10891,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 126,
+      "output_tokens": 28,
+      "reasoning_tokens": 0,
+      "total_tokens": 11045,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.00010891,
+        "cache_write": 0.0,
+        "output": 1.4e-05
+      },
+      "cost_usd": 0.00013551
+    },
+    {
+      "setup": "with_cache",
+      "document": "p07_longwharf_quote.pdf",
+      "call_index": 2,
+      "response_id": "resp_0b233b243c127b7f006aca721a2ce08196a79fcd414ac30cce",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11179,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 11053
+        },
+        "output_tokens": 144,
+        "output_tokens_details": {
+          "reasoning_tokens": 50
+        },
+        "total_tokens": 11323
+      },
+      "input_tokens": 11179,
+      "cache_read_tokens": 11053,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 126,
+      "output_tokens": 144,
+      "reasoning_tokens": 50,
+      "total_tokens": 11323,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.00011053,
+        "cache_write": 0.0,
+        "output": 7.2e-05
+      },
+      "cost_usd": 0.00019513
+    },
+    {
+      "setup": "with_cache",
+      "document": "p08_chapelst_email.eml",
+      "call_index": 1,
+      "response_id": "resp_047ddb0087046ed6006aca721c77088190a7422fc8ffdcdd57",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11018,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 10892
+        },
+        "output_tokens": 29,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 11047
+      },
+      "input_tokens": 11018,
+      "cache_read_tokens": 10892,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 126,
+      "output_tokens": 29,
+      "reasoning_tokens": 0,
+      "total_tokens": 11047,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.00010892,
+        "cache_write": 0.0,
+        "output": 1.45e-05
+      },
+      "cost_usd": 0.00013602
+    },
+    {
+      "setup": "with_cache",
+      "document": "p08_chapelst_email.eml",
+      "call_index": 2,
+      "response_id": "resp_047ddb0087046ed6006aca721e2ad08190879837cdbb5e81f2",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11186,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 11060
+        },
+        "output_tokens": 144,
+        "output_tokens_details": {
+          "reasoning_tokens": 45
+        },
+        "total_tokens": 11330
+      },
+      "input_tokens": 11186,
+      "cache_read_tokens": 11060,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 126,
+      "output_tokens": 144,
+      "reasoning_tokens": 45,
+      "total_tokens": 11330,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0001106,
+        "cache_write": 0.0,
+        "output": 7.2e-05
+      },
+      "cost_usd": 0.0001952
+    },
+    {
+      "setup": "with_cache",
+      "document": "p09_westville_email.eml",
+      "call_index": 1,
+      "response_id": "resp_0cbe5fd856fe7e84006aca72201ff88194a47dbfb40d766dcf",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11018,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 10892
+        },
+        "output_tokens": 29,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 11047
+      },
+      "input_tokens": 11018,
+      "cache_read_tokens": 10892,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 126,
+      "output_tokens": 29,
+      "reasoning_tokens": 0,
+      "total_tokens": 11047,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.00010892,
+        "cache_write": 0.0,
+        "output": 1.45e-05
+      },
+      "cost_usd": 0.00013602
+    },
+    {
+      "setup": "with_cache",
+      "document": "p09_westville_email.eml",
+      "call_index": 2,
+      "response_id": "resp_0cbe5fd856fe7e84006aca7221e070819482d7b3b457155979",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11322,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 11196
+        },
+        "output_tokens": 496,
+        "output_tokens_details": {
+          "reasoning_tokens": 396
+        },
+        "total_tokens": 11818
+      },
+      "input_tokens": 11322,
+      "cache_read_tokens": 11196,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 126,
+      "output_tokens": 496,
+      "reasoning_tokens": 396,
+      "total_tokens": 11818,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.00011196,
+        "cache_write": 0.0,
+        "output": 0.000248
+      },
+      "cost_usd": 0.00037256
+    },
+    {
+      "setup": "with_cache",
+      "document": "p10_eastrock_email.eml",
+      "call_index": 1,
+      "response_id": "resp_056617037d183fee006aca7226ba1c8196a6b2a12e94e625ce",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11018,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 10892
+        },
+        "output_tokens": 29,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 11047
+      },
+      "input_tokens": 11018,
+      "cache_read_tokens": 10892,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 126,
+      "output_tokens": 29,
+      "reasoning_tokens": 0,
+      "total_tokens": 11047,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.00010892,
+        "cache_write": 0.0,
+        "output": 1.45e-05
+      },
+      "cost_usd": 0.00013602
+    },
+    {
+      "setup": "with_cache",
+      "document": "p10_eastrock_email.eml",
+      "call_index": 2,
+      "response_id": "resp_056617037d183fee006aca7228276081969bbcaf237e951b72",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11205,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 11079
+        },
+        "output_tokens": 132,
+        "output_tokens_details": {
+          "reasoning_tokens": 35
+        },
+        "total_tokens": 11337
+      },
+      "input_tokens": 11205,
+      "cache_read_tokens": 11079,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 126,
+      "output_tokens": 132,
+      "reasoning_tokens": 35,
+      "total_tokens": 11337,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.00011079,
+        "cache_write": 0.0,
+        "output": 6.6e-05
+      },
+      "cost_usd": 0.00018939
+    },
+    {
+      "setup": "with_cache",
+      "document": "p11_yorkst_quote.html",
+      "call_index": 1,
+      "response_id": "resp_06df626e3a9c835f006aca722aced08195831cf72b974441f4",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11017,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 10891
+        },
+        "output_tokens": 28,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 11045
+      },
+      "input_tokens": 11017,
+      "cache_read_tokens": 10891,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 126,
+      "output_tokens": 28,
+      "reasoning_tokens": 0,
+      "total_tokens": 11045,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.00010891,
+        "cache_write": 0.0,
+        "output": 1.4e-05
+      },
+      "cost_usd": 0.00013551
+    },
+    {
+      "setup": "with_cache",
+      "document": "p11_yorkst_quote.html",
+      "call_index": 2,
+      "response_id": "resp_06df626e3a9c835f006aca722c37988195a54d6ff8f903b723",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11151,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 11025
+        },
+        "output_tokens": 148,
+        "output_tokens_details": {
+          "reasoning_tokens": 43
+        },
+        "total_tokens": 11299
+      },
+      "input_tokens": 11151,
+      "cache_read_tokens": 11025,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 126,
+      "output_tokens": 148,
+      "reasoning_tokens": 43,
+      "total_tokens": 11299,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.00011025,
+        "cache_write": 0.0,
+        "output": 7.4e-05
+      },
+      "cost_usd": 0.00019685
+    },
+    {
+      "setup": "with_cache",
+      "document": "p12_bluehen_quote.pdf",
+      "call_index": 1,
+      "response_id": "resp_0dfb5d9ab3adf4a8006aca722e7ca88196b42bdba20bee084a",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11016,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 10890
+        },
+        "output_tokens": 27,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 11043
+      },
+      "input_tokens": 11016,
+      "cache_read_tokens": 10890,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 126,
+      "output_tokens": 27,
+      "reasoning_tokens": 0,
+      "total_tokens": 11043,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0001089,
+        "cache_write": 0.0,
+        "output": 1.35e-05
+      },
+      "cost_usd": 0.000135
+    },
+    {
+      "setup": "with_cache",
+      "document": "p12_bluehen_quote.pdf",
+      "call_index": 2,
+      "response_id": "resp_0dfb5d9ab3adf4a8006aca72300c0c8196874c352511864fe9",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11177,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 11051
+        },
+        "output_tokens": 153,
+        "output_tokens_details": {
+          "reasoning_tokens": 48
+        },
+        "total_tokens": 11330
+      },
+      "input_tokens": 11177,
+      "cache_read_tokens": 11051,
+      "cache_write_tokens": 0,
+      "uncached_input_tokens": 126,
+      "output_tokens": 153,
+      "reasoning_tokens": 48,
+      "total_tokens": 11330,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.00011051,
+        "cache_write": 0.0,
+        "output": 7.65e-05
+      },
+      "cost_usd": 0.00019961
+    },
+    {
+      "setup": "without_cache",
+      "document": "p01_bluehen_quote.html",
+      "call_index": 1,
+      "response_id": "resp_00354a1635233365006aca723285e88195a925c98baa091ef2",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11040,
+        "input_tokens_details": {
+          "cache_write_tokens": 10914,
+          "cached_tokens": 0
+        },
+        "output_tokens": 27,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 11067
+      },
+      "input_tokens": 11040,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 10914,
+      "uncached_input_tokens": 126,
+      "output_tokens": 27,
+      "reasoning_tokens": 0,
+      "total_tokens": 11067,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0,
+        "cache_write": 0.00136425,
+        "output": 1.35e-05
+      },
+      "cost_usd": 0.00139035
+    },
+    {
+      "setup": "without_cache",
+      "document": "p01_bluehen_quote.html",
+      "call_index": 2,
+      "response_id": "resp_00354a1635233365006aca72379da08195ae8944abacc3ef1b",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11210,
+        "input_tokens_details": {
+          "cache_write_tokens": 11084,
+          "cached_tokens": 0
+        },
+        "output_tokens": 150,
+        "output_tokens_details": {
+          "reasoning_tokens": 48
+        },
+        "total_tokens": 11360
+      },
+      "input_tokens": 11210,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 11084,
+      "uncached_input_tokens": 126,
+      "output_tokens": 150,
+      "reasoning_tokens": 48,
+      "total_tokens": 11360,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0,
+        "cache_write": 0.0013855,
+        "output": 7.5e-05
+      },
+      "cost_usd": 0.0014731
+    },
+    {
+      "setup": "without_cache",
+      "document": "p02_elmcity_quote.html",
+      "call_index": 1,
+      "response_id": "resp_09fe4777d02e4250006aca7239f070819686192a4d2d669897",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11039,
+        "input_tokens_details": {
+          "cache_write_tokens": 10913,
+          "cached_tokens": 0
+        },
+        "output_tokens": 28,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 11067
+      },
+      "input_tokens": 11039,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 10913,
+      "uncached_input_tokens": 126,
+      "output_tokens": 28,
+      "reasoning_tokens": 0,
+      "total_tokens": 11067,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0,
+        "cache_write": 0.00136413,
+        "output": 1.4e-05
+      },
+      "cost_usd": 0.00139073
+    },
+    {
+      "setup": "without_cache",
+      "document": "p02_elmcity_quote.html",
+      "call_index": 2,
+      "response_id": "resp_09fe4777d02e4250006aca723bdd388196995ddacc88da7c4e",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11213,
+        "input_tokens_details": {
+          "cache_write_tokens": 11087,
+          "cached_tokens": 0
+        },
+        "output_tokens": 150,
+        "output_tokens_details": {
+          "reasoning_tokens": 45
+        },
+        "total_tokens": 11363
+      },
+      "input_tokens": 11213,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 11087,
+      "uncached_input_tokens": 126,
+      "output_tokens": 150,
+      "reasoning_tokens": 45,
+      "total_tokens": 11363,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0,
+        "cache_write": 0.00138587,
+        "output": 7.5e-05
+      },
+      "cost_usd": 0.00147347
+    },
+    {
+      "setup": "without_cache",
+      "document": "p03_ivyprint_catalog.html",
+      "call_index": 1,
+      "response_id": "resp_08056ba8687c66ba006aca723ddfd08194a7a84dcd644dfb22",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11039,
+        "input_tokens_details": {
+          "cache_write_tokens": 10913,
+          "cached_tokens": 0
+        },
+        "output_tokens": 28,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 11067
+      },
+      "input_tokens": 11039,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 10913,
+      "uncached_input_tokens": 126,
+      "output_tokens": 28,
+      "reasoning_tokens": 0,
+      "total_tokens": 11067,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0,
+        "cache_write": 0.00136413,
+        "output": 1.4e-05
+      },
+      "cost_usd": 0.00139073
+    },
+    {
+      "setup": "without_cache",
+      "document": "p03_ivyprint_catalog.html",
+      "call_index": 2,
+      "response_id": "resp_08056ba8687c66ba006aca723fe3788194bc5445da2c0deae0",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11211,
+        "input_tokens_details": {
+          "cache_write_tokens": 11085,
+          "cached_tokens": 0
+        },
+        "output_tokens": 292,
+        "output_tokens_details": {
+          "reasoning_tokens": 197
+        },
+        "total_tokens": 11503
+      },
+      "input_tokens": 11211,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 11085,
+      "uncached_input_tokens": 126,
+      "output_tokens": 292,
+      "reasoning_tokens": 197,
+      "total_tokens": 11503,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0,
+        "cache_write": 0.00138562,
+        "output": 0.000146
+      },
+      "cost_usd": 0.00154422
+    },
+    {
+      "setup": "without_cache",
+      "document": "p04_harborstitch_quote.html",
+      "call_index": 1,
+      "response_id": "resp_05663f73036c6b33006aca724347a08194a879d67b4221b61d",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11041,
+        "input_tokens_details": {
+          "cache_write_tokens": 10915,
+          "cached_tokens": 0
+        },
+        "output_tokens": 30,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 11071
+      },
+      "input_tokens": 11041,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 10915,
+      "uncached_input_tokens": 126,
+      "output_tokens": 30,
+      "reasoning_tokens": 0,
+      "total_tokens": 11071,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0,
+        "cache_write": 0.00136437,
+        "output": 1.5e-05
+      },
+      "cost_usd": 0.00139197
+    },
+    {
+      "setup": "without_cache",
+      "document": "p04_harborstitch_quote.html",
+      "call_index": 2,
+      "response_id": "resp_05663f73036c6b33006aca7244dd748194ad9fbb49c6492ceb",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11199,
+        "input_tokens_details": {
+          "cache_write_tokens": 11073,
+          "cached_tokens": 0
+        },
+        "output_tokens": 149,
+        "output_tokens_details": {
+          "reasoning_tokens": 43
+        },
+        "total_tokens": 11348
+      },
+      "input_tokens": 11199,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 11073,
+      "uncached_input_tokens": 126,
+      "output_tokens": 149,
+      "reasoning_tokens": 43,
+      "total_tokens": 11348,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0,
+        "cache_write": 0.00138412,
+        "output": 7.45e-05
+      },
+      "cost_usd": 0.00147122
+    },
+    {
+      "setup": "without_cache",
+      "document": "p05_maplemills_quote.pdf",
+      "call_index": 1,
+      "response_id": "resp_0f69d3231d3fed59006aca7246c0108196b30fae9f1f5374eb",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11041,
+        "input_tokens_details": {
+          "cache_write_tokens": 10915,
+          "cached_tokens": 0
+        },
+        "output_tokens": 28,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 11069
+      },
+      "input_tokens": 11041,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 10915,
+      "uncached_input_tokens": 126,
+      "output_tokens": 28,
+      "reasoning_tokens": 0,
+      "total_tokens": 11069,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0,
+        "cache_write": 0.00136437,
+        "output": 1.4e-05
+      },
+      "cost_usd": 0.00139097
+    },
+    {
+      "setup": "without_cache",
+      "document": "p05_maplemills_quote.pdf",
+      "call_index": 2,
+      "response_id": "resp_0f69d3231d3fed59006aca724844d88196a7b07ef3e42ef6db",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11187,
+        "input_tokens_details": {
+          "cache_write_tokens": 11061,
+          "cached_tokens": 0
+        },
+        "output_tokens": 157,
+        "output_tokens_details": {
+          "reasoning_tokens": 51
+        },
+        "total_tokens": 11344
+      },
+      "input_tokens": 11187,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 11061,
+      "uncached_input_tokens": 126,
+      "output_tokens": 157,
+      "reasoning_tokens": 51,
+      "total_tokens": 11344,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0,
+        "cache_write": 0.00138262,
+        "output": 7.85e-05
+      },
+      "cost_usd": 0.00147372
+    },
+    {
+      "setup": "without_cache",
+      "document": "p06_qtextile_quote.pdf",
+      "call_index": 1,
+      "response_id": "resp_098685f54fc5871d006aca724ae3e881959d5719106d015177",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11038,
+        "input_tokens_details": {
+          "cache_write_tokens": 10912,
+          "cached_tokens": 0
+        },
+        "output_tokens": 28,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 11066
+      },
+      "input_tokens": 11038,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 10912,
+      "uncached_input_tokens": 126,
+      "output_tokens": 28,
+      "reasoning_tokens": 0,
+      "total_tokens": 11066,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0,
+        "cache_write": 0.001364,
+        "output": 1.4e-05
+      },
+      "cost_usd": 0.0013906
+    },
+    {
+      "setup": "without_cache",
+      "document": "p06_qtextile_quote.pdf",
+      "call_index": 2,
+      "response_id": "resp_098685f54fc5871d006aca724cdcf48195b2427bd90f0eabca",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11227,
+        "input_tokens_details": {
+          "cache_write_tokens": 11101,
+          "cached_tokens": 0
+        },
+        "output_tokens": 153,
+        "output_tokens_details": {
+          "reasoning_tokens": 47
+        },
+        "total_tokens": 11380
+      },
+      "input_tokens": 11227,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 11101,
+      "uncached_input_tokens": 126,
+      "output_tokens": 153,
+      "reasoning_tokens": 47,
+      "total_tokens": 11380,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0,
+        "cache_write": 0.00138762,
+        "output": 7.65e-05
+      },
+      "cost_usd": 0.00147672
+    },
+    {
+      "setup": "without_cache",
+      "document": "p07_longwharf_quote.pdf",
+      "call_index": 1,
+      "response_id": "resp_0c5fdb5b655ac821006aca725058b08193b4fe58049ab6920d",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11041,
+        "input_tokens_details": {
+          "cache_write_tokens": 10915,
+          "cached_tokens": 0
+        },
+        "output_tokens": 28,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 11069
+      },
+      "input_tokens": 11041,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 10915,
+      "uncached_input_tokens": 126,
+      "output_tokens": 28,
+      "reasoning_tokens": 0,
+      "total_tokens": 11069,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0,
+        "cache_write": 0.00136437,
+        "output": 1.4e-05
+      },
+      "cost_usd": 0.00139097
+    },
+    {
+      "setup": "without_cache",
+      "document": "p07_longwharf_quote.pdf",
+      "call_index": 2,
+      "response_id": "resp_0c5fdb5b655ac821006aca725228d48193b58abeedca5ce3d4",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11200,
+        "input_tokens_details": {
+          "cache_write_tokens": 11074,
+          "cached_tokens": 0
+        },
+        "output_tokens": 142,
+        "output_tokens_details": {
+          "reasoning_tokens": 40
+        },
+        "total_tokens": 11342
+      },
+      "input_tokens": 11200,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 11074,
+      "uncached_input_tokens": 126,
+      "output_tokens": 142,
+      "reasoning_tokens": 40,
+      "total_tokens": 11342,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0,
+        "cache_write": 0.00138425,
+        "output": 7.1e-05
+      },
+      "cost_usd": 0.00146785
+    },
+    {
+      "setup": "without_cache",
+      "document": "p08_chapelst_email.eml",
+      "call_index": 1,
+      "response_id": "resp_0cfbec538af562f8006aca725402408197a1b7adba4d939f85",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11041,
+        "input_tokens_details": {
+          "cache_write_tokens": 10915,
+          "cached_tokens": 0
+        },
+        "output_tokens": 29,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 11070
+      },
+      "input_tokens": 11041,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 10915,
+      "uncached_input_tokens": 126,
+      "output_tokens": 29,
+      "reasoning_tokens": 0,
+      "total_tokens": 11070,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0,
+        "cache_write": 0.00136437,
+        "output": 1.45e-05
+      },
+      "cost_usd": 0.00139147
+    },
+    {
+      "setup": "without_cache",
+      "document": "p08_chapelst_email.eml",
+      "call_index": 2,
+      "response_id": "resp_0cfbec538af562f8006aca725571088197b5385b164f53101c",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11211,
+        "input_tokens_details": {
+          "cache_write_tokens": 11085,
+          "cached_tokens": 0
+        },
+        "output_tokens": 147,
+        "output_tokens_details": {
+          "reasoning_tokens": 42
+        },
+        "total_tokens": 11358
+      },
+      "input_tokens": 11211,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 11085,
+      "uncached_input_tokens": 126,
+      "output_tokens": 147,
+      "reasoning_tokens": 42,
+      "total_tokens": 11358,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0,
+        "cache_write": 0.00138562,
+        "output": 7.35e-05
+      },
+      "cost_usd": 0.00147172
+    },
+    {
+      "setup": "without_cache",
+      "document": "p09_westville_email.eml",
+      "call_index": 1,
+      "response_id": "resp_03ec432adebf4f90006aca7257397c81949aa652f02ad40c68",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11045,
+        "input_tokens_details": {
+          "cache_write_tokens": 10919,
+          "cached_tokens": 0
+        },
+        "output_tokens": 29,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 11074
+      },
+      "input_tokens": 11045,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 10919,
+      "uncached_input_tokens": 126,
+      "output_tokens": 29,
+      "reasoning_tokens": 0,
+      "total_tokens": 11074,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0,
+        "cache_write": 0.00136487,
+        "output": 1.45e-05
+      },
+      "cost_usd": 0.00139197
+    },
+    {
+      "setup": "without_cache",
+      "document": "p09_westville_email.eml",
+      "call_index": 2,
+      "response_id": "resp_03ec432adebf4f90006aca7258c48c81948539342000a4771d",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11346,
+        "input_tokens_details": {
+          "cache_write_tokens": 11220,
+          "cached_tokens": 0
+        },
+        "output_tokens": 366,
+        "output_tokens_details": {
+          "reasoning_tokens": 273
+        },
+        "total_tokens": 11712
+      },
+      "input_tokens": 11346,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 11220,
+      "uncached_input_tokens": 126,
+      "output_tokens": 366,
+      "reasoning_tokens": 273,
+      "total_tokens": 11712,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0,
+        "cache_write": 0.0014025,
+        "output": 0.000183
+      },
+      "cost_usd": 0.0015981
+    },
+    {
+      "setup": "without_cache",
+      "document": "p10_eastrock_email.eml",
+      "call_index": 1,
+      "response_id": "resp_0744ae917bcb581b006aca725cb1b481908d11bb35c6bb5a0f",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11041,
+        "input_tokens_details": {
+          "cache_write_tokens": 10915,
+          "cached_tokens": 0
+        },
+        "output_tokens": 29,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 11070
+      },
+      "input_tokens": 11041,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 10915,
+      "uncached_input_tokens": 126,
+      "output_tokens": 29,
+      "reasoning_tokens": 0,
+      "total_tokens": 11070,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0,
+        "cache_write": 0.00136437,
+        "output": 1.45e-05
+      },
+      "cost_usd": 0.00139147
+    },
+    {
+      "setup": "without_cache",
+      "document": "p10_eastrock_email.eml",
+      "call_index": 2,
+      "response_id": "resp_0744ae917bcb581b006aca725ea1008190abcd962584cd29a7",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11228,
+        "input_tokens_details": {
+          "cache_write_tokens": 11102,
+          "cached_tokens": 0
+        },
+        "output_tokens": 151,
+        "output_tokens_details": {
+          "reasoning_tokens": 53
+        },
+        "total_tokens": 11379
+      },
+      "input_tokens": 11228,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 11102,
+      "uncached_input_tokens": 126,
+      "output_tokens": 151,
+      "reasoning_tokens": 53,
+      "total_tokens": 11379,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0,
+        "cache_write": 0.00138775,
+        "output": 7.55e-05
+      },
+      "cost_usd": 0.00147585
+    },
+    {
+      "setup": "without_cache",
+      "document": "p11_yorkst_quote.html",
+      "call_index": 1,
+      "response_id": "resp_0dd41357fd8e8308006aca726080b4819789ac765048c3cbc2",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11040,
+        "input_tokens_details": {
+          "cache_write_tokens": 10914,
+          "cached_tokens": 0
+        },
+        "output_tokens": 28,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 11068
+      },
+      "input_tokens": 11040,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 10914,
+      "uncached_input_tokens": 126,
+      "output_tokens": 28,
+      "reasoning_tokens": 0,
+      "total_tokens": 11068,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0,
+        "cache_write": 0.00136425,
+        "output": 1.4e-05
+      },
+      "cost_usd": 0.00139085
+    },
+    {
+      "setup": "without_cache",
+      "document": "p11_yorkst_quote.html",
+      "call_index": 2,
+      "response_id": "resp_0dd41357fd8e8308006aca72622dd881978d05aae6fdcadcb9",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11169,
+        "input_tokens_details": {
+          "cache_write_tokens": 11043,
+          "cached_tokens": 0
+        },
+        "output_tokens": 146,
+        "output_tokens_details": {
+          "reasoning_tokens": 46
+        },
+        "total_tokens": 11315
+      },
+      "input_tokens": 11169,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 11043,
+      "uncached_input_tokens": 126,
+      "output_tokens": 146,
+      "reasoning_tokens": 46,
+      "total_tokens": 11315,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0,
+        "cache_write": 0.00138038,
+        "output": 7.3e-05
+      },
+      "cost_usd": 0.00146598
+    },
+    {
+      "setup": "without_cache",
+      "document": "p12_bluehen_quote.pdf",
+      "call_index": 1,
+      "response_id": "resp_03e49227f3e9ed6f006aca72643ba48196a8df34c98ed47d7e",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11037,
+        "input_tokens_details": {
+          "cache_write_tokens": 10911,
+          "cached_tokens": 0
+        },
+        "output_tokens": 27,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 11064
+      },
+      "input_tokens": 11037,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 10911,
+      "uncached_input_tokens": 126,
+      "output_tokens": 27,
+      "reasoning_tokens": 0,
+      "total_tokens": 11064,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0,
+        "cache_write": 0.00136388,
+        "output": 1.35e-05
+      },
+      "cost_usd": 0.00138998
+    },
+    {
+      "setup": "without_cache",
+      "document": "p12_bluehen_quote.pdf",
+      "call_index": 2,
+      "response_id": "resp_03e49227f3e9ed6f006aca7265d9b48196914a5c343359f509",
+      "portkey_cache_status": "REFRESH",
+      "provider": "azure-openai",
+      "api_usage": {
+        "input_tokens": 11197,
+        "input_tokens_details": {
+          "cache_write_tokens": 11071,
+          "cached_tokens": 0
+        },
+        "output_tokens": 137,
+        "output_tokens_details": {
+          "reasoning_tokens": 39
+        },
+        "total_tokens": 11334
+      },
+      "input_tokens": 11197,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 11071,
+      "uncached_input_tokens": 126,
+      "output_tokens": 137,
+      "reasoning_tokens": 39,
+      "total_tokens": 11334,
+      "cost_breakdown_usd": {
+        "uncached_input": 1.26e-05,
+        "cached_input": 0.0,
+        "cache_write": 0.00138387,
+        "output": 6.85e-05
+      },
+      "cost_usd": 0.00146497
+    }
+  ]
+}
