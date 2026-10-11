@@ -40,7 +40,7 @@ download it and open it in a browser. It is one self-contained file that works o
 ```bash
 python -m venv C:\venvs\hw6
 C:\venvs\hw6\Scripts\python -m pip install -r hw6/requirements.txt
-# put PORTKEY_API_KEY=... in a .env file in hw6/ or any parent folder (not committed)
+# copy hw6/.env.example to hw6/.env and fill in PORTKEY_API_KEY (.env is git-ignored)
 cd hw6
 C:\venvs\hw6\Scripts\python agent.py data/exam_docs/e01_quote.html                    # defended agent
 C:\venvs\hw6\Scripts\python agent.py --defenses none data/practice_docs/p02_elmcity_quote.html  # original agent

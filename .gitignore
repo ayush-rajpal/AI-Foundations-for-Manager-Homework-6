@@ -1,7 +1,12 @@
-__pycache__/
-*.pyc
+# secrets: the real .env never goes to GitHub; .env.example (blank template) does
 .env
 .env.*
+!.env.example
+**/.env
+
+# Python / local junk
+__pycache__/
+*.pyc
 .venv/
 *.tmp
 hw6/output/_attachment_*

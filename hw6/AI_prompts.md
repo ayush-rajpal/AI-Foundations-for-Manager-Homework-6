@@ -264,3 +264,9 @@ improve:
 ```text
 we are moving to problem 10: push to github and submit the url
 ```
+
+### Prompt 2
+
+```text
+Push project to a public GitHub repository - include the whole data/ folder - Do not push .env. Use .gitignore to keep it out, and include .env.example
+```
