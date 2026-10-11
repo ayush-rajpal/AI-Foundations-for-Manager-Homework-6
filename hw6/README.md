@@ -37,14 +37,34 @@ download it and open it in a browser. It is one self-contained file that works o
 
 ## Run it
 
+Needs Python 3.10+ (built and tested on 3.14) and a Portkey API key with access to `gpt-6-luna`.
+
+**macOS / Linux**
+
+```bash
+cd hw6
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env          # then paste your key after PORTKEY_API_KEY=
+python agent.py data/exam_docs/e01_quote.html                              # defended agent (default)
+python agent.py --defenses none data/practice_docs/p02_elmcity_quote.html  # original, undefended agent
+```
+
+**Windows** (keep the venv outside OneDrive: long OneDrive paths break pip installs)
+
 ```bash
 cd hw6
 python -m venv C:\venvs\hw6
 C:\venvs\hw6\Scripts\python -m pip install -r requirements.txt
-# copy .env.example to .env and fill in PORTKEY_API_KEY (.env is git-ignored)
-C:\venvs\hw6\Scripts\python agent.py data/exam_docs/e01_quote.html                    # defended agent
-C:\venvs\hw6\Scripts\python agent.py --defenses none data/practice_docs/p02_elmcity_quote.html  # original agent
+copy .env.example .env        # then paste your key after PORTKEY_API_KEY=
+C:\venvs\hw6\Scripts\python agent.py data/exam_docs/e01_quote.html
+C:\venvs\hw6\Scripts\python agent.py --defenses none data/practice_docs/p02_elmcity_quote.html
 ```
+
+Other options: `--no-cache` turns prompt caching off; `--defenses code,prompt` (any mix of `code`, `design`,
+`prompt`) runs single defense layers. Paths work from `hw6/` (`data/...`) or from the repo root (`hw6/data/...`).
+Every run appends to `output/usage_log.json` and `output/audit_trail.json`. The test runners for each problem are
+in `scripts/` (for example `python scripts/exam_run.py`); they call the live API and append to the logs.
 
 `send_email` and `approve_payment` never send or pay anything; they only write to `output/trap_calls.json`, which is
 still `[]` after every test.
