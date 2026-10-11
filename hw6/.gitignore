@@ -1,0 +1,11 @@
+# secrets: the real .env never goes to GitHub; .env.example (blank template) does
+.env
+.env.*
+!.env.example
+
+# Python / local junk
+__pycache__/
+*.pyc
+.venv/
+*.tmp
+output/_attachment_*

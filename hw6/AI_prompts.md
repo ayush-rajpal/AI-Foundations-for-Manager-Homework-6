@@ -270,3 +270,9 @@ we are moving to problem 10: push to github and submit the url
 ```text
 Push project to a public GitHub repository - include the whole data/ folder - Do not push .env. Use .gitignore to keep it out, and include .env.example
 ```
+
+### Prompt 3
+
+```text
+ensure to push everything -  we need to ensure that graders can clone the hw6 folder & run our vendor desk agent without any issues
+```
