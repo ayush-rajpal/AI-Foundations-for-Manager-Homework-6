@@ -90,6 +90,9 @@ ALL_DEFENSES = Defenses()
 
 
 def build_model() -> OpenAIResponsesModel:
+    if not os.getenv("PORTKEY_API_KEY", "").strip():
+        raise SystemExit("PORTKEY_API_KEY is missing: copy .env.example to .env (in hw6/ or a parent folder) "
+                         "and paste your Portkey key after PORTKEY_API_KEY=")
     client = AsyncOpenAI(
         api_key=os.environ["PORTKEY_API_KEY"],
         base_url=os.getenv("PORTKEY_BASE_URL", "https://api.portkey.ai/v1"),
@@ -245,7 +248,10 @@ def run(document: str | Path, setup: str = "with_cache", defenses: Defenses | st
         init_log(log)
     path = Path(document)
     if not path.is_absolute():
-        path = (HW_DIR / path).resolve()
+        # Works from hw6/ ("data/...") and from the repo root ("hw6/data/...").
+        path = (Path.cwd() / path if (Path.cwd() / path).exists() else HW_DIR / path).resolve()
+    if not path.exists():
+        raise SystemExit(f"Document not found: {document}")
     agent = get_agent(defenses, setup)
     deps = AgentDeps(document_path=path, code_layer=defenses.code)
     settings = CACHE_SETTINGS[setup]
